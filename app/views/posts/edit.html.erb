@@ -1,0 +1,14 @@
+<div class="container">
+<h1>Edit Post</h1>
+
+<%= form_for(@post, :url => {:action => 'update', :id => @post.id}) do |f| %>
+  <div class="form-group">
+  <%= f.text_field(:title, class: 'form-control')  %>
+  </div>
+  <%= f.text_area(:content, class: 'form-control')%><br>
+  <%= submit_tag("Update", class: 'btn btn-info col-md-12')  %>
+  <% end %>
+
+</div>
+
+  
