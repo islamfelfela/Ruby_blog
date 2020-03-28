@@ -31,12 +31,12 @@ class PostsController < ApplicationController
     def destroy
         @post = Post.find(params[:id])
         @post.destroy!
-        redirect_to action: :index
+        redirect_to :posts
     end
 
 
     private
         def post_params
-            params.permit(:title, :content)
+            params.require(:post).permit(:title, :content)
         end
 end
