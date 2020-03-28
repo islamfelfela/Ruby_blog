@@ -9,13 +9,22 @@ class PostsController < ApplicationController
 
 
     def index
-        @posts = Post.all
+        # @posts = User.find(2).posts
+        @posts = Post.order(id: :desc)
     end
 
     def create
-        @post = Post.new(post_params)
-        @post.save
-        redirect_to :posts
+
+        # @post = Post.create(post_params)
+        # @post.user_id = 2
+        @post = User.find(2).posts.create(post_params)
+        # @post.save
+
+        if @post.id
+            redirect_to :posts
+        else
+            render :new
+        end
     end
 
     def edit
